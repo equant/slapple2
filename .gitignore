@@ -1,3 +1,9 @@
+history/
+credentials.h
+*.swp
+*.s
+tags
+
 # Prerequisites
 *.d
 
