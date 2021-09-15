@@ -65,35 +65,35 @@ unsigned char inputline(unsigned char x, unsigned char y, unsigned char width,
     default:
       c = ptoa(c);
       if (allowme[c] && len < maxlen) {
-	++len;
-	memmove(buffer + pos + offset + 1, buffer + pos + offset, strlen(buffer + pos + offset) + 1);
-	buffer[pos + offset] = c;
-	buffer[len] = 0;
-	printbuf(x, y, width, buffer + offset);
+        ++len;
+        memmove(buffer + pos + offset + 1, buffer + pos + offset, strlen(buffer + pos + offset) + 1);
+        buffer[pos + offset] = c;
+        buffer[len] = 0;
+        printbuf(x, y, width, buffer + offset);
       }
 
       // fall through
 
     case CH_CURS_RIGHT:
       if (pos + offset < len) {
-	if (pos < width - 1) {
-	  pos += 1;
-	} else if (len > offset + pos) {
-	  offset += 1;
-	  if (offset + pos == len) {
-	    cputsxy(x + width - 1, y, " ");
-	  }
-	  printbuf(x, y, width, buffer + offset);
-	}
+        if (pos < width - 1) {
+          pos += 1;
+        } else if (len > offset + pos) {
+          offset += 1;
+          if (offset + pos == len) {
+            cputsxy(x + width - 1, y, " ");
+          }
+          printbuf(x, y, width, buffer + offset);
+        }
       }
       break;
 
     case CH_CURS_LEFT:
       if (pos > 0) {
-	pos -= 1;
-      } else if (offset > 0) {
-	offset -= 1;
-	printbuf(x, y, width, buffer + offset);
+        pos -= 1;
+          } else if (offset > 0) {
+        offset -= 1;
+        printbuf(x, y, width, buffer + offset);
       }
       break;
 

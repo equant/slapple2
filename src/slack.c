@@ -10,11 +10,12 @@
 //#include <string.h>
 //#include <peekpoke.h>
 
-#include "slackui.h"
+#include "slack.h"
 #include "inputline.h"
 
 unsigned char i = 0;
 char p;
+char text[20];
 
 //unsigned char menuEntries[8][4] = {"HLP", "END", "SEL", "REF", "CPY", "REN", "MDR", "DEL"};
 //unsigned char menuEntries[MENU_LENGTH][MENU_WORD_LENGTH] = {"CHANNEL", "MISC"};
@@ -53,20 +54,28 @@ void main(void)
     gotoxy(0, 3);
     //printf("Screensize is %d by %d\n", size_x, size_y);
 	printf("Hello, world!\n");
-    //p = PEEK(0xFFFF);
     for (i=0;i<8;i++)
     {
-        p = PEEK(0xC200);
-        printf("PEEK(%u) -> %d\n", 0xC200+i, p, p);
+        p = PEEK(0xC200+i);
+        printf("(%u) -> %d, %c\n", 0xC200+i, p, p);
     }
-    //printf("Here IS 0xC200: %c \n", atoi(PEEK(0xC200)));
     cursor(1);
     p = cgetc();
-    gotoxy(0, SIZE_Y-1);
+    gotoxy(0, SIZE_Y-5);
     printf("You said: %c\n", p);
-    inputline(1, 17, 38, 53, ibuf, NULL);
+    //inputline(1, 17, 38, 53, ibuf, NULL);
     //gotoxy(1, 17);
-    //printf("YO: %c", ibuf);
+    //printf("YO: %c\n", ibuf);
+    //cursor(1);
+    //p = cgetc();
+    fputs("enter some text: ", stdout);
+    fflush(stdout); /* http://c-faq.com/stdio/fflush.html */
+    fgets(text, sizeof text, stdin);
+    printf("\ntext = \"%s\"\n", text);
+    //printf("YO: %c\n", ibuf);
+    printf("Press any key to exit.");
+    cursor(1);
+    p = cgetc();
 
 }
 

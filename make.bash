@@ -13,3 +13,4 @@ ld65 -o slackui -t apple2 slackui.o inputline.o menu.o screen.o apple2.lib
 java -jar ~/bin/AppleCommander.jar -d hello.dsk slack
 java -jar ~/bin/AppleCommander.jar -as hello.dsk slack bin < slackui
 java -jar ~/bin/AppleCommander.jar -l hello.dsk
+java -jar ~/bin/AppleCommander.jar -as ~/bin/ADTPro-2.1.0/disks/dev.dsk slack bin < slapple2.apple2 
